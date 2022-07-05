@@ -6,6 +6,9 @@ class Netflix < ApplicationRecord
   scope :filter_by_genre, ->(genre) { where show_type: genre }
   scope :filter_by_country, ->(country) { where country: country }
 
+  # Kaminari
+  paginates_per 10
+  
   # Parse do atributo 'date_added'
   def as_json(options = {})
     super(options)
