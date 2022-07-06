@@ -12,6 +12,6 @@ Explicando:
   ** date_added --> published_at
   ** release_year --> year
 ** As respostas do endpoint estão ordenadas em ordem decrescente pelo ano.
-** Adicionei no Model Netflix a validação: `validates :title, uniqueness: true` para não permitir duplicidade de registros.
+** Adicionei no Model Netflix as validações: `validates :title, uniqueness: true` e `validates :description, uniqueness: true` para não permitir duplicidade de registros.
 ** Os registros podem ser filtrados por ano(year), gênero(genre) e país(country).
 ** Fiz uma paginação no endpoint de listagem de filmes com 10 por página.

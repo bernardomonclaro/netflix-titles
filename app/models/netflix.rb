@@ -1,6 +1,7 @@
 class Netflix < ApplicationRecord
   # Evita o cadastro de registros duplicados baseado no atributo 'title'
   validates :title, uniqueness: true
+  validates :description, uniqueness: true
 
   scope :filter_by_year, ->(year) { where release_year: year }
   scope :filter_by_genre, ->(genre) { where show_type: genre }
@@ -8,7 +9,7 @@ class Netflix < ApplicationRecord
 
   # Kaminari
   paginates_per 10
-  
+
   # Parse do atributo 'date_added'
   def as_json(options = {})
     super(options)
@@ -18,9 +19,8 @@ class Netflix < ApplicationRecord
     else
       time_convert = date_added
     end
-
-  # Troca os nomes dos atributos para aparecerem da forma pedida na response
-  # 'show_type' => 'genre', 'release_year' => 'year' e 'date_added' => 'published_at'
+    # Troca os nomes dos atributos para aparecerem da forma pedida na response
+    # 'show_type' => 'genre', 'release_year' => 'year' e 'date_added' => 'published_at'
     {
       id: id,
       title: title,
