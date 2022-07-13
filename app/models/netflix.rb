@@ -1,7 +1,6 @@
 class Netflix < ApplicationRecord
   # Evita o cadastro de registros duplicados baseado no atributo 'title'
-  validates :title, uniqueness: true
-  validates :description, uniqueness: true
+  validates :show_id, uniqueness: true
 
   scope :filter_by_year, ->(year) { where release_year: year }
   scope :filter_by_genre, ->(genre) { where show_type: genre }

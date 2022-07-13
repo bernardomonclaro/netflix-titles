@@ -4,6 +4,7 @@ class NetflixesController < ApplicationController
   # GET /netflixes
   def index
     @netflixes = Netflix.all.page(params[:page])
+
     @netflixes = Netflix.where(nil) # cria um escopo anônimo
     filtering_params(params).each do |key, value|
       @netflixes = @netflixes.public_send("filter_by_#{key}", value) if value.present?

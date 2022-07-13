@@ -6,14 +6,14 @@ describe 'Netflix', type: :request do
     it 'return all datas and status code 200 OK' do
       get '/netflixes'
       expect(response.body).not_to be_empty
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:ok) # 200
     end
   end
 
   # POST
   describe 'POST /netflixes' do
     context 'when the request is valid and have duplicate data' do
-      let(:new_data) do
+      let(:new_data) do  #let(:new_data) { Netflix.new }
         {
           title: 'Tropa de ELite',
           show_type: 'TV Show',
@@ -26,7 +26,7 @@ describe 'Netflix', type: :request do
 
       it 'return status code 201 created' do
         post '/netflixes', params: new_data, as: :json
-        expect(response).to have_http_status(:created)
+        expect(response).to have_http_status(:created) # 201
       end
     end
   end
@@ -36,7 +36,7 @@ describe 'Netflix', type: :request do
     it 'returns status code 204' do
       data = Netflix.create!(title: 'Teste')
       delete "/netflixes/#{data.id}"
-      expect(response).to have_http_status(:no_content)
+      expect(response).to have_http_status(:no_content) # 204
     end
   end
 end

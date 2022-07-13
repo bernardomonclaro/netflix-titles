@@ -16,7 +16,7 @@ Desafio Backend API
 
 * Utilizei o scope para filtrar os registros por ano(year), gênero(genre) e país(country).
 
-* Adicionei no Model Netflix as validações: `validates :title, uniqueness: true` e `validates :description, uniqueness: true` para não permitir que haja duplicidade de registros.
+* Adicionei no Model Netflix a validação: `validates :show_id, uniqueness: true` para não permitir que haja duplicidade de registros.
 
 * Troquei o nome dos seguintes atributos para obedecerem ao padrão da response pedido:
 
